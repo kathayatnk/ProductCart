@@ -22,8 +22,11 @@ final class AppCoordinator: BaseCoordinator {
     
     private func showCart() {
         let view = CartView()
-        let viewModel = CartViewModel(cartManager: CartManagerFactory.get())
+        let viewModel = CartViewModel(
+            cartManager: ManagerFactory.getCartManager(),
+            userManager: ManagerFactory.getUserManager())
         let controller = CartController(baseView: view, baseViewModel: viewModel)
+        controller.title = "My Cart"
         
 //        viewModel.trigger.sink { [weak self] (route) in
 //            guard let self = self else { return }
@@ -33,6 +36,11 @@ final class AppCoordinator: BaseCoordinator {
 //            }
 //        }.store(in: &viewModel.bag)
         
+        navigator.navigationBar.prefersLargeTitles = true
         navigator.setViewControllers([controller], animated: false)
+    }
+    
+    private func showDetails() {
+        
     }
 }

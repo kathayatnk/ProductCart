@@ -6,30 +6,31 @@
 //
 
 import Foundation
+import Combine
 
 class CartViewModel: BaseViewModel {
     
-    let cartManager: CartManageable
+    private let userManager: UserManageable
+    private let cartManager: CartManageable
+    let dataSource = CurrentValueSubject<CartInfoModel?, Never>(nil)
     
-    init(cartManager: CartManageable) {
+    init(cartManager: CartManageable, userManager: UserManageable) {
         self.cartManager = cartManager
+        self.userManager = userManager
         super.init()
         self.seedInitialData()
     }
     
-    /// Method to seed initial cart data
+    /// We seed the required mocked data
     private func seedInitialData() {
-        guard let pathURL = Bundle.main.url(forResource: "SampleData", withExtension: "json") else {
-            assertionFailure("Unable to find the required sample data file in bundle")
-            return
-        }
-        do {
-            let contentData = try Data(contentsOf: pathURL)
-            let items = try JSONDecoder().decode([CartItem].self, from: contentData)
-            try cartManager.seed(items)
-        } catch {
-            assertionFailure("Unable to seed data \(error.localizedDescription)")
-        }
+        cartManager.seedInitialData()
+        userManager.seedLoggedInUser()
+        
+        // after the data is seeded we get the data set our dataSource
+        cartManager.cartItems.sink { [weak self] items in
+            guard let self = self, let user = self.userManager.currentLoggedInUser() else { return }
+            let cartModel = CartInfoModel(user: user, items: items)
+            self.dataSource.send(cartModel)
+        }.store(in: &cancellables)
     }
-    
 }
