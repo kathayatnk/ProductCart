@@ -10,6 +10,7 @@ import Combine
 
 protocol CartManageable {
     var cartItems: CurrentValueSubject<[CartItem], Never> { get }
+    func seed(_ items: [CartItem]) throws
     func add(_ item: CartItem) throws
     func delete(_ item: CartItem) throws -> Int
     func update(_ item: CartItem) throws

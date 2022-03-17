@@ -54,6 +54,10 @@ final class CartManager: CartManageable {
         }
     }
     
+    func seed(_ items: [CartItem]) throws {
+        try updateCache(items)
+    }
+    
     private func updateCache(_ items: [CartItem]) throws {
         
         let data = try JSONEncoder().encode(items)
