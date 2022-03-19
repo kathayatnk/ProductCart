@@ -55,10 +55,8 @@ class UserDefaultCacherTests: XCTestCase {
             cache?.remove(for: "Item")
             let savedItemData = cache?.getData(for: "Item")
             XCTAssertNil(savedItemData)
-            
         } catch {
             XCTAssert(false)
         }
     }
-    
 }

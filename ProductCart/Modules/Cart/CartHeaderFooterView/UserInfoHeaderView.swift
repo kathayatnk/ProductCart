@@ -20,15 +20,15 @@ final class UserInfoHeaderView: UITableViewHeaderFooterView {
     func create(for user: User) {
         contentView.backgroundColor = .offWhite
         loadView()
-        
+
         userInfoView.userNameLabel.attributedText = "\(user.firstName) \(user.lastName)".attributed(font: .boldSystemFont(ofSize: 16.0), color: .darkGray)
-        
+
         var fullAddressInfo = user.address?.primary ?? ""
         if let secondary = user.address?.secondary {
             fullAddressInfo.append("\n\(secondary)")
         }
         fullAddressInfo.append("\n\(user.address?.contactNumber ?? "")")
-        
+
         userInfoView.userAddressLabel.attributedText = fullAddressInfo.attributed(font: .systemFont(ofSize: 13.0), color: .gray)
     }
     

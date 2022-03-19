@@ -25,22 +25,23 @@ class CartViewModel: BaseViewModel {
         self.userManager = userManager
         self.infoModel = CartInfoModel(data: [])
         super.init()
-        getCartItems()
+    }
+    
+    
+    func setInitialState() {
+        self.infoModel = CartInfoModel(user: userManager.currentLoggedInUser(), data: [], state: .initial)
+        dataFetched.send(true)
     }
     
     /// This can be network request to get the cart items
     /// for now we will simulate the effect
     /// This is just simulating method  which delays the data load by 2 seconds 
     func getCartItems() {
-        
-        // 1. clear all the data from source and mark as initial state
-        self.infoModel = CartInfoModel(user: userManager.currentLoggedInUser(), data: [], state: .initial)
-        dataFetched.send(true)
-        
-        // 2. re-seed data if all items becames empty or is empty
+    
+        // 1. re-seed data if all items becames empty or is empty
         cartManager.seedInitialData(force: infoModel.data.isEmpty)
         
-        // 3. subscribe to items from cart manager and wait for 2 minutes, once the data is received we cancel the subscription
+        // 2. subscribe to items from cart manager and wait for 2 minutes, once the data is received we cancel the subscription
         itemSubscritpionCancellable = cartManager.cartItems.delay(for: 2, scheduler: RunLoop.main).sink { [weak self] items in
             guard let self = self else { return }
             self.setInfoModel(with: items)

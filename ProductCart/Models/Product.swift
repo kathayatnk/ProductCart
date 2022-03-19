@@ -14,7 +14,7 @@ struct Product: Codable, Equatable {
     let image: String
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "MyCustomUUID"
         case name
         case price
         case image
@@ -23,7 +23,7 @@ struct Product: Codable, Equatable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.id = UUID()
+        self.id = try container.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
         self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
         self.price = try container.decodeIfPresent(Double.self, forKey: .price) ?? 1.0
         self.image = try container.decodeIfPresent(String.self, forKey: .image) ?? ""

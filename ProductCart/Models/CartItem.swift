@@ -15,7 +15,7 @@ struct CartItem: Codable, Equatable {
     
     
     enum CodingKeys: String, CodingKey {
-        case itemId
+        case itemId = "MyCustomItemId"
         case quantity
         case product
         case note
@@ -24,7 +24,7 @@ struct CartItem: Codable, Equatable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.itemId = UUID()
+        self.itemId = try container.decodeIfPresent(UUID.self, forKey: .itemId) ?? UUID()
         self.quantity = try container.decodeIfPresent(Int.self, forKey: .quantity) ?? 1
         self.product = try container.decode(Product.self, forKey: .product)
         self.note = try container.decodeIfPresent(String.self, forKey: .note)

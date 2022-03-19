@@ -31,14 +31,15 @@ class CartViewModelTests: XCTestCase {
         
         let expectation = expectation(description: "Data source trigger has the data")
         
-        viewModel.dataSource.sink(receiveValue: { info in
+        viewModel.dataFetched.sink(receiveValue: { _ in
             expectation.fulfill()
         }).store(in: &viewModel.cancellables)
         
-        wait(for: [expectation], timeout: 1)
+        viewModel.getCartItems()
         
-        XCTAssertNotNil(viewModel.dataSource.value)
-        XCTAssertTrue(viewModel.dataSource.value?.items.count == 2)
+        wait(for: [expectation], timeout: 5) // the time out is 5 here becuase we are delaying the load by 2 in viewmodel
+        
+        XCTAssertTrue(viewModel.infoModel.data.count == 2)
     }
 
 }
@@ -50,7 +51,7 @@ class MockedCartManager: CartManageable {
     let cartItems = CurrentValueSubject<[CartItem], Never>([])
     
     
-    func seedInitialData() {
+    func seedInitialData(force: Bool) {
         cartItems.send([MockedData.getItem(), MockedData.getItem()])
     }
     

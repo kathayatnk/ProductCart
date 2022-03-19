@@ -13,7 +13,9 @@ final class LoadingTableViewCell: UITableViewCell {
     private var rotatingLayer: CAShapeLayer?
     
     override func prepareForReuse() {
+        rotatingLayer?.removeFromSuperlayer()
         rotatingLayer = nil
+        setNeedsDisplay()
     }
     
     private func setLayer() {

@@ -28,6 +28,7 @@ class CartController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setInitialState()
         viewModel.getCartItems()
         navigationItem.rightBarButtonItem = reloadButton
     }
@@ -42,6 +43,7 @@ class CartController: BaseController {
     }
     
     @objc private func reload() {
+        viewModel.setInitialState()
         viewModel.getCartItems()
     }
     
