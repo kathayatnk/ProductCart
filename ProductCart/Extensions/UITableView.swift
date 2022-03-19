@@ -17,4 +17,8 @@ extension UITableView {
     func registerHeaderFooter<C: UITableViewHeaderFooterView>(_ type: C.Type) {
         register(type.self, forHeaderFooterViewReuseIdentifier: C.identifier)
     }
+    
+    func dequeue<C: UITableViewCell>(_ type: C.Type, indexPath: IndexPath) -> C {
+        dequeueReusableCell(withIdentifier: C.identifier, for: indexPath) as! C
+    }
 }

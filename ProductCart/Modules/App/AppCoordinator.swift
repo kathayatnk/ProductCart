@@ -28,19 +28,7 @@ final class AppCoordinator: BaseCoordinator {
         let controller = CartController(baseView: view, baseViewModel: viewModel)
         controller.title = "My Cart"
         
-//        viewModel.trigger.sink { [weak self] (route) in
-//            guard let self = self else { return }
-//            switch route {
-//            default:
-//                break
-//            }
-//        }.store(in: &viewModel.bag)
-        
         navigator.navigationBar.prefersLargeTitles = true
         navigator.setViewControllers([controller], animated: false)
-    }
-    
-    private func showDetails() {
-        
     }
 }

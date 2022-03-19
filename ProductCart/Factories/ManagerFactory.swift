@@ -15,6 +15,8 @@ struct ManagerFactory {
     }
     
     static func getUserManager() -> UserManageable {
-        return UserManager(cache: CacheFactory.get())
+        let userManager = UserManager(cache: CacheFactory.get())
+        userManager.seedLoggedInUser()
+        return userManager
     }
 }

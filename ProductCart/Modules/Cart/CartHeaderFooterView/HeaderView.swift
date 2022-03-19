@@ -14,6 +14,7 @@ final class HeaderView: BaseView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.image = .narendra
         return imageView
     }()
     
@@ -35,10 +36,21 @@ final class HeaderView: BaseView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.image = .chevronRight
+        imageView.tintColor = .lightGray
         return imageView
     }()
     
+    lazy var containerStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 5.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     override func create() {
+        super.create()
         generateChildrens()
     }
 }
@@ -47,30 +59,34 @@ extension HeaderView {
     
     private func generateChildrens() {
         addSubview(profileImageView)
-        addSubview(userNameLabel)
-        addSubview(userAddressLabel)
+        addSubview(containerStack)
         addSubview(moreDetailIconImageView)
         NSLayoutConstraint.activate([
             moreDetailIconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             moreDetailIconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.0),
-            moreDetailIconImageView.heightAnchor.constraint(equalToConstant: 20.0),
-            moreDetailIconImageView.widthAnchor.constraint(equalToConstant: 20.0),
+            moreDetailIconImageView.heightAnchor.constraint(equalToConstant: 15.0),
+            moreDetailIconImageView.widthAnchor.constraint(equalToConstant: 15.0),
             
             profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.0),
             profileImageView.heightAnchor.constraint(equalToConstant: 60.0),
             profileImageView.widthAnchor.constraint(equalToConstant: 60.0),
             
-            userNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8.0),
-            userNameLabel.trailingAnchor.constraint(equalTo: moreDetailIconImageView.leadingAnchor, constant: -8.0),
-            userNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
-            userNameLabel.heightAnchor.constraint(equalToConstant: 30.0),
-
-            userAddressLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor),
-            userAddressLabel.trailingAnchor.constraint(equalTo: userNameLabel.trailingAnchor),
-            userAddressLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
-            userAddressLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 8.0)
+            containerStack.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 15.0),
+            containerStack.trailingAnchor.constraint(equalTo: moreDetailIconImageView.leadingAnchor, constant: -15.0),
+            containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 10.0),
+            containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.0)
             
         ])
+        
+        containerStack.addArrangedSubview(userNameLabel)
+        containerStack.addArrangedSubview(userAddressLabel)
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2.0
+        profileImageView.layer.masksToBounds = true
     }
 }

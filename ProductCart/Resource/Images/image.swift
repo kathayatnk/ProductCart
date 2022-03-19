@@ -11,4 +11,5 @@ import UIKit
 extension UIImage {
     
     static let chevronRight = UIImage(systemName: "chevron.right")
+    static let narendra = UIImage(named: "narendra")
 }

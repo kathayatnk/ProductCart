@@ -17,7 +17,7 @@ final class UserManager: UserManageable {
     }
     
     func seedLoggedInUser() {
-        let address = Address(primary: "ward 13, chinatown near Balaju mall. Kathmandu", secondary: nil, contactNumber: "+977 98XXXXXXXX")
+        let address = Address(primary: "Kathmandu 44600, Balaju", secondary: nil, contactNumber: "+977 9822233345")
         let user = User(firstName: "Narendra", lastName: "Kathayat", email: "kathayatnk@outlook.com", id: UUID(), address: address)
         do {
             let userData = try JSONEncoder().encode(user)
