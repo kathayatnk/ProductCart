@@ -45,9 +45,9 @@ final class AppCoordinator: BaseCoordinator {
     }
     
     private func showDetails(user: User) {
-        let view = CheckoutView()
-        let viewModel = CheckoutViewModel()
-        let controller = CheckoutController(baseView: view, baseViewModel: viewModel)
+        let view = UserDetailsView()
+        let viewModel = UserDetailsViewModel()
+        let controller = UserDetailsController(baseView: view, baseViewModel: viewModel)
         controller.title = "\(user.firstName) \(user.lastName)"
         
         let internalNavigator = UINavigationController(rootViewController: controller)
@@ -58,7 +58,7 @@ final class AppCoordinator: BaseCoordinator {
         let view = CheckoutView()
         let viewModel = CheckoutViewModel()
         let controller = CheckoutController(baseView: view, baseViewModel: viewModel)
-        controller.title = Localized.checkout.value
+        controller.title = Localized.payment.value
         
         let internalNavigator = UINavigationController(rootViewController: controller)
         navigator.present(internalNavigator, animated: true, completion: nil)

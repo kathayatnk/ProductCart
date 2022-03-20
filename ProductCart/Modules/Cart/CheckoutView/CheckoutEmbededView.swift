@@ -46,7 +46,7 @@ final class CheckoutEmbededView: BaseView {
     lazy var checkoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Localized.checkoutButtonTitle.value, for: .normal)
+        button.setTitle(Localized.continuePayment.value, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 10.0

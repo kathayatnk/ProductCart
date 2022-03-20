@@ -11,8 +11,8 @@ enum Localized {
     case appName
     case emptyCartTitle
     case emptyCartMessage
-    case checkout
-    case checkoutButtonTitle
+    case payment
+    case continuePayment
     case total
     case subtotal
     case tax(String)
@@ -27,10 +27,10 @@ enum Localized {
             return "EMPTY_CART_TITLE"
         case .emptyCartMessage:
             return "EMPTY_CART_MESSAGE"
-        case .checkout:
-            return "CHECKOUT"
-        case .checkoutButtonTitle:
-            return "PROCEED_CHECKOUT"
+        case .payment:
+            return "PAYMENT"
+        case .continuePayment:
+            return "CONTINUE_PAYMENT"
         case .total:
             return "TOTAL"
         case .subtotal:
