@@ -7,12 +7,49 @@
 
 import Foundation
 
-enum LocalizedKey: String {
-    case appName = "APP_NAME"
-    case emptyCartTitle = "EMPTY_CART_TITLE"
-    case emptyCartMessage = "EMPTY_CART_MESSAGE"
+enum Localized {
+    case appName
+    case emptyCartTitle
+    case emptyCartMessage
+    case checkout
+    case checkoutButtonTitle
+    case total
+    case subtotal
+    case tax(String)
+    case currencyUnit
+    case myCart
+    
+    private var key: String {
+        switch self {
+        case .appName:
+            return "APP_NAME"
+        case .emptyCartTitle:
+            return "EMPTY_CART_TITLE"
+        case .emptyCartMessage:
+            return "EMPTY_CART_MESSAGE"
+        case .checkout:
+            return "CHECKOUT"
+        case .checkoutButtonTitle:
+            return "PROCEED_CHECKOUT"
+        case .total:
+            return "TOTAL"
+        case .subtotal:
+            return "SUBTOTAL"
+        case .tax:
+            return "TAX"
+        case .currencyUnit:
+            return "CURRENCY_UNIT"
+        case .myCart:
+            return "MY_CART"
+        }
+    }
     
     var value: String {
-        return rawValue.localized()
+        switch self {
+        case .tax(let taxValue):
+            return key.localized(params: [taxValue])
+        default:
+            return key.localized()
+        }
     }
 }

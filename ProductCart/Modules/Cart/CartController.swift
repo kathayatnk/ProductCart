@@ -53,6 +53,12 @@ class CartController: BaseController {
             guard let self = self else { return }
             self.checkState()
         }.store(in: &viewModel.cancellables)
+        
+        screenView.checkoutView.checkoutButton.publisher(for: .touchUpInside).sink { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.routeTrigger.send(CartRoute.checkout)
+        }.store(in: &viewModel.cancellables)
+        
     }
     
     private func checkState() {
@@ -126,9 +132,14 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
             guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: UserInfoHeaderView.identifier) as? UserInfoHeaderView, let user = viewModel.infoModel.user else {
                 return nil
             }
+            
+            headerView.userInfoView.detailButton.publisher(for: .touchUpInside).sink { [weak self] _ in
+                guard let self = self else { return }
+                self.viewModel.routeTrigger.send(CartRoute.userDetails(user))
+            }.store(in: &viewModel.cancellables)
+            
             headerView.create(for: user)
             return headerView
-            
         } else {
             let orderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 35.0))
             let orderLabel = UILabel(frame: CGRect(x: 15.0, y: 0, width: orderView.bounds.width - 30.0, height: 35.0))

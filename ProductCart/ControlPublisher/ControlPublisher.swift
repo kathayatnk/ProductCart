@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-/// Define the publisher
+/// Add the extension for publisher on UIControl
 public extension UIControl  {
     func publisher(for events: UIControl.Event) -> UIControlPublisher<UIControl> {
         return UIControlPublisher(control: self, events: events)

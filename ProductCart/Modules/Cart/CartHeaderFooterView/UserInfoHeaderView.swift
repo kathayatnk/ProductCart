@@ -7,8 +7,16 @@
 
 import Foundation
 import UIKit
+import Combine
 
 final class UserInfoHeaderView: UITableViewHeaderFooterView {
+    
+    var bag = Set<AnyCancellable>()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = Set<AnyCancellable>()
+    }
     
     lazy var userInfoView: HeaderView = {
         let headerView = HeaderView()

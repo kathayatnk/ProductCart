@@ -43,6 +43,13 @@ final class CartItemCellView: BaseView {
         return label
     }()
     
+    lazy var indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     override func create() {
         super.create()
         generateChildrens()
@@ -57,6 +64,7 @@ extension CartItemCellView {
         addSubview(productItemNoteLabel)
         addSubview(productPriceLabel)
         addSubview(quantityEditorView)
+        addSubview(indicatorView)
         NSLayoutConstraint.activate([
             productImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
             productImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0),
@@ -79,7 +87,10 @@ extension CartItemCellView {
             quantityEditorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0),
             quantityEditorView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
             quantityEditorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
-            quantityEditorView.widthAnchor.constraint(equalToConstant: 40.0)
+            quantityEditorView.widthAnchor.constraint(equalToConstant: 40.0),
+            
+            indicatorView.centerYAnchor.constraint(equalTo: productImageView.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: productImageView.centerXAnchor),
             
         ])
     }

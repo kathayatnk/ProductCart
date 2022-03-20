@@ -20,8 +20,8 @@ final class CartView: BaseView {
         return tableView
     }()
     
-    lazy var checkoutView: CheckoutView = {
-        let view = CheckoutView()
+    lazy var checkoutView: CheckoutEmbededView = {
+        let view = CheckoutEmbededView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -57,7 +57,7 @@ class CartViewModel: BaseViewModel {
     }
     
     private func setEmptyData() {
-        let errorModel = DataErrorModel(icon: nil, title: LocalizedKey.emptyCartTitle.value, message: LocalizedKey.emptyCartMessage.value)
+        let errorModel = DataErrorModel(icon: nil, title: Localized.emptyCartTitle.value, message: Localized.emptyCartMessage.value)
         self.infoModel = CartInfoModel<[CartItemCellViewModel]>(user: userManager.currentLoggedInUser(), data: [], state: .failed(errorModel))
     }
     

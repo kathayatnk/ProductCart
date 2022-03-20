@@ -49,6 +49,12 @@ final class HeaderView: BaseView {
         return stackView
     }()
     
+    lazy var detailButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func create() {
         super.create()
         generateChildrens()
@@ -61,6 +67,7 @@ extension HeaderView {
         addSubview(profileImageView)
         addSubview(containerStack)
         addSubview(moreDetailIconImageView)
+        addSubview(detailButton)
         NSLayoutConstraint.activate([
             moreDetailIconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             moreDetailIconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.0),
@@ -75,7 +82,12 @@ extension HeaderView {
             containerStack.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 15.0),
             containerStack.trailingAnchor.constraint(equalTo: moreDetailIconImageView.leadingAnchor, constant: -15.0),
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 10.0),
-            containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.0)
+            containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.0),
+            
+            detailButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            detailButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            detailButton.topAnchor.constraint(equalTo: topAnchor),
+            detailButton.bottomAnchor.constraint(equalTo: bottomAnchor),
             
         ])
         

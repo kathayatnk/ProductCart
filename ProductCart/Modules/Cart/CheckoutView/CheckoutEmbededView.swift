@@ -1,5 +1,5 @@
 //
-//  CheckoutView.swift
+//  CheckoutEmbededView.swift
 //  ProductCart
 //
 //  Created by Narendra Kathayat on 18.03.22.
@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-final class CheckoutView: BaseView {
+final class CheckoutEmbededView: BaseView {
     
     lazy var subtotalView: LeftRightLabelView = {
         let view = LeftRightLabelView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.leftLabel.text = "Sub Total"
+        view.leftLabel.text = Localized.subtotal.value
         view.rightLabel.text = "-"
         return view
     }()
@@ -21,7 +21,7 @@ final class CheckoutView: BaseView {
     lazy var taxView: LeftRightLabelView = {
         let view = LeftRightLabelView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.leftLabel.text = "Tax (10%)"
+        view.leftLabel.text = Localized.tax("10").value
         view.rightLabel.text = "-"
         return view
     }()
@@ -29,7 +29,7 @@ final class CheckoutView: BaseView {
     lazy var totalView: LeftRightLabelView = {
         let view = LeftRightLabelView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.leftLabel.text = "Total"
+        view.leftLabel.text = Localized.total.value
         view.rightLabel.text = "-"
         return view
     }()
@@ -46,7 +46,7 @@ final class CheckoutView: BaseView {
     lazy var checkoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("CHECKOUT", for: .normal)
+        button.setTitle(Localized.checkoutButtonTitle.value, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 10.0
@@ -66,13 +66,13 @@ final class CheckoutView: BaseView {
         let tax = subtotal * 0.1
         let total = subtotal + tax
         
-        subtotalView.rightLabel.attributedText = "Rs. \(subtotal.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
-        taxView.rightLabel.attributedText = "Rs. \(tax.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
-        totalView.rightLabel.attributedText = "Rs. \(total.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
+        subtotalView.rightLabel.attributedText = "\(Localized.currencyUnit.value) \(subtotal.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
+        taxView.rightLabel.attributedText = "\(Localized.currencyUnit.value) \(tax.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
+        totalView.rightLabel.attributedText = "\(Localized.currencyUnit.value) \(total.decimalFormatted())".attributed(font: .systemFont(ofSize: 14.0, weight: .heavy), color: .darkGray, alignment: .right)
     }
 }
 
-extension CheckoutView {
+extension CheckoutEmbededView {
     
     private func generateChildrens() {
         addSubview(containerStack)

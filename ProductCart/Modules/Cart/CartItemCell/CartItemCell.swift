@@ -43,13 +43,17 @@ final class CartItemCell: UITableViewCell {
     }
     
     private func loadProductImage(_ viewModel: CartItemCellViewModel) {
+        
         if let imageData = viewModel.imageData, let image = UIImage(data: imageData) {
+            cellView.indicatorView.stopAnimating()
             cellView.productImageView.image = image
         } else {
+            cellView.indicatorView.startAnimating()
             viewModel.imageLoadComplete = {[weak self]  imageData in
                 guard let self = self, let imageData = imageData, let image = UIImage(data: imageData) else { return }
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
+                    self.cellView.indicatorView.stopAnimating()
                     self.cellView.productImageView.image = image
                 }
             }
