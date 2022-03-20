@@ -20,7 +20,6 @@ final class CartManager: CartManageable {
     }
     
     func add(_ item: CartItem) throws {
-        
         var availableItems = cartItems.value
         availableItems.append(item)
         try updateCache(availableItems)
@@ -40,7 +39,6 @@ final class CartManager: CartManageable {
         let index = try delete(item)
         var availableItems = cartItems.value
         availableItems.insert(item, at: index)
-        
         try updateCache(availableItems)
     }
     
@@ -54,11 +52,24 @@ final class CartManager: CartManageable {
         }
     }
     
+    func seedInitialData(force: Bool = false) {
+        guard get().isEmpty || force else { return }
+        guard let pathURL = Bundle.main.url(forResource: "SampleData", withExtension: "json") else {
+            assertionFailure("Unable to find the required sample data file in bundle")
+            return
+        }
+        do {
+            let contentData = try Data(contentsOf: pathURL)
+            let items = try JSONDecoder().decode([CartItem].self, from: contentData)
+            try updateCache(items)
+        } catch {
+            assertionFailure("Unable to seed data \(error.localizedDescription)")
+        }
+    }
+    
     private func updateCache(_ items: [CartItem]) throws {
-        
         let data = try JSONEncoder().encode(items)
         cache.set(data: data, for: cacheKey)
-        
         cartItems.send(items)
     }
 }

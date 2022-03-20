@@ -11,7 +11,7 @@ import Foundation
 struct MockedData {
     
     static func getUser() -> User {
-        User(firstName: "Narendra ", lastName: "Kathayat", email: "kathayatnk@outlook.com", id: UUID())
+        User(firstName: "Narendra ", lastName: "Kathayat", email: "kathayatnk@outlook.com", id: UUID(), address: nil)
     }
     
     static func getProduct() -> Product {

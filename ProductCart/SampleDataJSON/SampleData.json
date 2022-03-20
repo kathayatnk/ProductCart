@@ -1,0 +1,57 @@
+[
+  {
+    "itemId": "3d8aa9fc-aab8-4f95-b2a0-ab65a4d25498",
+    "quantity": 2,
+    "note": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "product": {
+      "id": "2baa9b65-45a6-4f3f-a5bc-066c2ddd3b67",
+      "name": "Flavouring Vanilla Artificial",
+      "price": 5.0,
+      "image": "https://img.freepik.com/free-photo/concept-indian-cuisine-baked-chicken-wings-legs-honey-mustard-sauce-serving-dishes-restaurant-black-plate-indian-spices-wooden-table-background-image_127425-18.jpg?size=626&ext=jpg"
+    }
+  },
+  {
+    "itemId": "19445789-014e-496a-944e-5abee4a566c1",
+    "quantity": 1,
+    "note": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "product": {
+      "id": "5b8da191-d322-4edf-9ab5-129c5946ad59",
+      "name": "Chinese Lemon Pork",
+      "price": 15.0,
+      "image": "https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg?t=st=1647612137~exp=1647612737~hmac=acdad9690e25ed2e934daf6d2a50d53a56594d75a79dcfbbb36c700234ec720f&w=826"
+    }
+  },
+  {
+    "itemId": "622ac034-61aa-4d01-9722-ee53ead80eb5",
+    "quantity": 1,
+    "note": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "product": {
+      "id": "2c782f6c-c26f-4b68-9a00-063a38a1d1f5",
+      "name": "Oranges - Navel, 72",
+      "price": 9.0,
+      "image": "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?t=st=1647612137~exp=1647612737~hmac=03b924b7afa3343f0b0fe6b4cc753c1a466c4f29f86076d701eb447db34f98cc&w=826"
+    }
+  },
+  {
+    "itemId": "3c13c603-4c18-44a0-bd0f-52cbe86ea33c",
+    "quantity": 3,
+    "note": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "product": {
+      "id": "beecf9fb-5ed7-418e-bfde-3b6b5ecea08e",
+      "name": "Salmon - Fillets",
+      "price": 11.0,
+      "image": "https://img.freepik.com/free-photo/top-view-tray-with-delicious-food_23-2148723446.jpg?w=826"
+    }
+  },
+  {
+    "itemId": "deef80c6-98e1-4e53-ad28-396befce779d",
+    "quantity": 6,
+    "note": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "product": {
+      "id": "3b221093-e285-4792-a59b-f14d019bf27f",
+      "name": "Lamb - Ground",
+      "price": 10.0,
+      "image": "https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg?t=st=1647612137~exp=1647612737~hmac=acdad9690e25ed2e934daf6d2a50d53a56594d75a79dcfbbb36c700234ec720f&w=826"
+    }
+  }
+]

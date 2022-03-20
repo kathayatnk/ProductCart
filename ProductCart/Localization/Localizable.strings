@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  ProductCart
+
+  Created by Narendra Kathayat on 18.03.22.
+  
+*/
+
+"APP_NAME" = "ProductCart";
+"EMPTY_CART_TITLE" = "Empty Cart";
+"EMPTY_CART_MESSAGE" = "It seems you haven't add items to your cart. Please reload from button above to load some items.";
+"PAYMENT" = "Payment";
+"CONTINUE_PAYMENT" = "Continue Payment";
+"TOTAL" = "Toal";
+"SUB_TOTAL" = "Sub Total";
+"TAX" = "Tax(%%@)";
+"CURRENCY_UNIT" = "Rs.";
+"MY_CART" = "My Cart";

@@ -8,5 +8,5 @@
 import Foundation
 
 enum CartRoute: AppRoutable {
-    case productDetails
+    case userDetails(User), checkout
 }
